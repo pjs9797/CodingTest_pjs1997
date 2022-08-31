@@ -1,41 +1,32 @@
-import Foundation
-
-var n = Int(readLine()!)!
-var sum = 0
-var a: [String] = []
+let n = Int(readLine()!)!
+var ans = 0
 
 for _ in 1...n{
-    let arr = readLine()!.map{ String($0) }
-    var z = 0
-    var a: [String] = []
-    a.append(arr[0])
-    if(arr.count > 1 ){
-        for i in 1...arr.count-1{
-            if(arr[i] != arr[i-1]){
-                if(a.contains(arr[i])){
-                    z = 1
-                    break
-                }
-                else{
-                    a.append(arr[i])
-                }
+    var arr: [Bool] = Array(repeating: false, count: 26)
+    let input = readLine()!.map{String($0)}
+    var start = input[0]
+    var check = 0
+    if(input.count != 1){
+        for i in 1...input.count-1{
+            let index = Int(UnicodeScalar(input[i])!.value) - Int(UnicodeScalar("a").value)
+            if(input[i-1] == input[i]){
+                arr[index] = true
             }
             else{
-                if(a.contains(arr[i])){
-                    continue
+                
+                if(arr[index]){
+                    check = 1
                 }
                 else{
-                    z = 1
-                    break
+                    let index2 = Int(UnicodeScalar(input[i-1])!.value) - Int(UnicodeScalar("a").value)
+                    arr[index2] = true
+                    arr[index] = true
                 }
             }
         }
     }
-    
-    if(z != 1){
-        sum+=1
+    if(check == 0){
+        ans += 1
     }
 }
-print(sum)
-
-
+print(ans)
