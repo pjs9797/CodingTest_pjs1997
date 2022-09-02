@@ -70,16 +70,7 @@ for _ in 1...testcase{
     for i in 1...n{
         arr.append(file.readInt())
     }
-    var min = 1000001
-    var max = -1000001
-    for i in 0...arr.count-1{
-        if(arr[i] > max){
-            max = arr[i]
-        }
-        if(arr[i] < min){
-            min = arr[i]
-        }
-    }
-    print(min,max)
+    
+    print(arr.min()!,arr.max()!)
     
 }
