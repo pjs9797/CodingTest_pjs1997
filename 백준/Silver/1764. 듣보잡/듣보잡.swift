@@ -1,25 +1,22 @@
-var input = readLine()!.split(separator: " ").map{Int(String($0))!}
+let input = readLine()!.split(separator: " ").map{Int(String($0))!}
 
-var n = input[0]
-var m = input[1]
+let n = input[0]
+let m = input[1]
 
-var arr = Set<String>()
-var ans: [String] = []
+var A = Set<String>()
+var B = Set<String>()
 
 for i in 1...n{
-    var a = readLine()!
-    arr.insert(a)
+    A.insert(readLine()!)
 }
-
 for i in 1...m{
-    var b = readLine()!
-    if(arr.contains(b)){
-        ans.append(b)
+    let a = readLine()!
+    if(A.contains(a)){
+        B.insert(a)
     }
 }
 
-ans.sort()
-
+var ans = B.sorted()
 print(ans.count)
 for i in ans{
     print(i)
