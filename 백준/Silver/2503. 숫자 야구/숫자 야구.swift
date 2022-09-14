@@ -1,59 +1,70 @@
-import Foundation
+let n = Int(readLine()!)!
 
-var n = Int(readLine()!)!
-var sum = 0
-var arr: [[Int]] = Array(repeating: Array(repeating: 0, count: 3), count: n)
-var aa: [Int] = Array(repeating: 0, count: n)
+var arr:[[Int]] = Array(repeating: Array(repeating: 0, count: 3), count: n)
+
 for i in 0...n-1{
-    var input = readLine()!.components(separatedBy: " ").map{Int(String($0))!}
-    aa[i] = input[0]
-    for j in 0...2{
-        arr[i][j] = input[j]
-    }
+    let input = readLine()!.split(separator: " ").map{Int(String($0))!}
+    arr[i][0] = input[0]
+    arr[i][1] = input[1]
+    arr[i][2] = input[2]
 }
-
+var cnt = 0
 for i in 1...9{
     for j in 1...9{
         for k in 1...9{
             if(i != j && j != k && i != k){
-                var ans: [Int] = [i,j,k]
-                var check = 0
-                for l in 0...n-1{
-                    
-                    var num:[Int] = [aa[l]/100, (aa[l] / 10) % 10, aa[l] % 10]
-                    var strike = arr[l][1]
-                    var ball = arr[l][2]
-                    var s = 0
-                    var b = 0
-                    
-                    if(ans[0] == num[0]){
-                        s += 1
-                    }
-                    else if(ans[0] == num[1] || ans[0] == num[2]){
-                        b += 1
-                    }
-                    if(ans[1] == num[1]){
-                        s += 1
-                    }
-                    else if(ans[1] == num[0] || ans[1] == num[2]){
-                        b += 1
-                    }
-                    if(ans[2] == num[2]){
-                        s += 1
-                    }
-                    else if(ans[2] == num[1] || ans[2] == num[0]){
-                        b += 1
-                    }
-                    if(strike == s && ball == b){
-                        check += 1
-                    }
-                    if(check == n){
-                        sum += 1
-                    }
+                var str = i*100 + j*10 + k
+                if(check(str)){
+                    cnt += 1
                 }
             }
         }
     }
 }
 
-print(sum)
+print(cnt)
+
+func check(_ str:Int) -> Bool{
+    for i in 0...n-1{
+        var num = arr[i][0]
+        var firstStr = str / 100
+        var secondStr = (str % 100) / 10
+        var thirdStr = (str % 100) % 10
+        var firstNum = num / 100
+        var secondNum = (num % 100) / 10
+        var thirdNum = (num % 100) % 10
+        var strike = 0
+        var ball = 0
+        if(firstStr == firstNum){
+            strike += 1
+        }
+        else{
+            if(firstStr == secondNum || firstStr == thirdNum){
+                ball += 1
+            }
+        }
+        if(secondStr == secondNum){
+            strike += 1
+        }
+        else{
+            if(secondStr == firstNum || secondStr == thirdNum){
+                ball += 1
+            }
+        }
+        if(thirdNum == thirdStr){
+            strike += 1
+        }
+        else{
+            if(thirdStr == firstNum || thirdStr == secondNum){
+                ball += 1
+            }
+        }
+        if(strike == arr[i][1] && ball == arr[i][2]){
+            continue
+        }
+        else{
+            return false
+        }
+    }
+    return true
+}
