@@ -15,13 +15,18 @@ arr.sort(by: {
     return $0[1] < $1[1]
 })
 
-var ans:[[Int]] = [[arr[0][0],arr[0][1]]]
+var cnt = 1
+var end = arr[0][1]
 
 for i in 1...arr.count-1{
-    if(ans.last![1] <= arr[i][0]){
-        ans.append([arr[i][0],arr[i][1]])
+    
+    var start = arr[i][0]
+    if(start >= end){
+        end = arr[i][1]
+        cnt += 1
     }
 }
+print(cnt)
 
 
-print(ans.count)
+
