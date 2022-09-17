@@ -1,3 +1,4 @@
+
 var input = readLine()!.split(separator: " ").map{Int(String($0))!}
 
 
