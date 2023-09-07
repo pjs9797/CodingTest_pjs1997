@@ -11,8 +11,8 @@ public class Main {
         String [] A = br.readLine().split(" ");
         int N = Integer.parseInt(A[0]);
         int M = Integer.parseInt(A[1]);
-        //HashMap<String,String> map = new HashMap<>();
-        TreeMap<String,String> map = new TreeMap<>();
+        HashMap<String,String> map = new HashMap<>();
+        //TreeMap<String,String> map = new TreeMap<>();
         for (int i = 0; i < N; i++) {
             String [] AA = br.readLine().split(" ");
             map.put(AA[0],AA[1]);
