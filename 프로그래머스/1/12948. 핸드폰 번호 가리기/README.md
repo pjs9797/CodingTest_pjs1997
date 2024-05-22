@@ -1,10 +1,10 @@
 # [level 1] 핸드폰 번호 가리기 - 12948 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12948) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12948?language=swift) 
 
 ### 성능 요약
 
-메모리: 77.6 MB, 시간: 1.89 ms
+메모리: 16.1 MB, 시간: 0.04 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 04월 25일 16:02:33
+2024년 05월 22일 20:08:54
 
 ### 문제 설명
 
